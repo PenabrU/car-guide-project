@@ -18,3 +18,9 @@ yarn-error.log*
 
 # VS Code 설정 폴더 무시
 .vscode/
+
+# 업로드된 임시 파일 무시
+/backend/uploads/
+
+# Google Cloud 서비스 계정 키 무시
+/backend/service-account-key.json
