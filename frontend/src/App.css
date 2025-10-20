@@ -1,135 +1,116 @@
-/* 메인 앱 컨테이너 (10단계에서 수정) */
-.App {
-  background-color: transparent; /* App 자체의 배경은 투명하게 */
-  padding: 0;
-  box-shadow: none;
-  text-align: center;
+/* 히어로 섹션 */
+.App-hero {
+  background: linear-gradient(to right, #005c97, #363795);
+  color: white; padding: 50px 20px; text-align: center;
+  border-radius: 12px; margin-bottom: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
+.App-hero h1 { margin-top: 0; margin-bottom: 10px; font-size: 2.8rem; font-weight: 700; }
+.App-subtitle { font-size: 1.1rem; color: #e0e0e0; margin-bottom: 0; }
 
-/* 10단계: 기능별 섹션 구분 */
-.feature-section {
-  background-color: #ffffff;
-  padding: 32px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  margin-bottom: 30px; /* 섹션 간 여백 */
+/* 기능 섹션 카드 */
+.feature-card {
+  background-color: #ffffff; border-radius: 16px; padding: 35px;
+  margin-bottom: 40px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0; text-align: left; /* 왼쪽 정렬 */
 }
-
-/* 10단계: App 헤더 스타일 간소화 */
-.App-header {
-  margin-bottom: 20px;
-  text-align: center;
+.feature-card h2 {
+  display: flex; align-items: center; font-size: 1.8rem;
+  color: #2d3748; margin-top: 0; margin-bottom: 10px;
 }
-.App-header h1 {
-  color: #1a1a1a;
-  margin-top: 0;
-}
+.card-icon { font-size: 1.5em; margin-right: 12px; line-height: 1; }
+.analysis-card .card-icon { color: #3182ce; }
+.recommend-card .card-icon { color: #38a169; }
+.card-description { color: #718096; font-size: 1rem; margin-bottom: 30px; }
 
 /* 파일 업로드 영역 */
 .upload-section {
-  border: 2px dashed #007bff; /* 파란색 점선 테두리 */
-  border-radius: 8px;
-  padding: 24px;
-  background-color: #f9f9f9;
-  margin-bottom: 20px;
+  border: 2px dashed #cbd5e0; border-radius: 12px; padding: 30px;
+  background-color: #edf2f7; text-align: center; margin-bottom: 25px;
 }
-
-/* 기본 파일 input은 숨김 */
-input[type="file"] {
-  display: none;
-}
-
-/* 파일 input을 대신할 커스텀 버튼 */
+input[type="file"] { display: none; }
 .file-label {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #007bff;
-  border: 1px solid #007bff;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.file-label:hover {
-  background-color: #f0f8ff;
-}
-
-/* 선택된 파일 이름을 보여줄 텍스트 */
-.file-name {
-  margin-top: 12px;
-  font-size: 14px;
-  color: #555;
-}
-
-/* 메인 업로드 버튼 */
-.upload-button {
-  background-color: #007bff;
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  display: inline-block; padding: 10px 25px; font-size: 1rem; font-weight: 600;
+  color: #ffffff; background-color: #4299e1; border-radius: 8px; cursor: pointer;
   transition: background-color 0.2s ease;
-  width: 100%; /* 버튼 너비 꽉 채우기 */
-  margin-top: 10px;
 }
+.file-label:hover { background-color: #2b6cb0; }
+.file-name { margin-top: 15px; font-size: 0.9rem; color: #4a5568; }
 
-.upload-button:hover {
-  background-color: #0056b3;
+/* 메인 액션 버튼 */
+.action-button {
+  display: flex; align-items: center; justify-content: center; width: 100%;
+  padding: 14px 24px; font-size: 1.1rem; font-weight: 600; color: white;
+  border-radius: 8px; transition: background-color 0.2s ease, transform 0.1s ease;
 }
+.analysis-button { background-color: #3182ce; }
+.analysis-button:hover:not(:disabled) { background-color: #2c5282; }
+.recommend-button { background-color: #38a169; }
+.recommend-button:hover:not(:disabled) { background-color: #2f855a; }
 
-.upload-button:disabled {
-  background-color: #a0a0a0;
-  cursor: not-allowed;
-}
-
-/* 10단계: 라이프스타일 입력창 */
+/* 라이프스타일 입력창 */
 .lifestyle-textarea {
-  width: 95%; /* 100%에서 약간의 여백 */
-  height: 100px;
-  padding: 12px;
-  font-family: inherit;
-  font-size: 15px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  resize: vertical; /* 세로 크기만 조절 가능 */
-  margin-bottom: 10px;
+  width: calc(100% - 24px); height: 120px; padding: 12px; font-family: inherit;
+  font-size: 1rem; border-radius: 8px; border: 1px solid #cbd5e0;
+  resize: vertical; margin-bottom: 15px; background-color: #f7fafc;
 }
-
-/* 10단계: 추천받기 버튼 색상 변경 */
-.recommend-button {
-  background-color: #28a745; /* 초록색 계열 */
-}
-.recommend-button:hover {
-  background-color: #218838;
-}
+.lifestyle-textarea:focus { outline: none; border-color: #4299e1; box-shadow: 0 0 0 1px #4299e1; }
 
 /* 결과 메시지 영역 */
 .result-section {
-  margin-top: 24px;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f1f3f5;
-  text-align: left;
+  margin-top: 30px; padding: 25px; border-radius: 12px;
+  background-color: #edf2f7; border: 1px solid #e2e8f0;
 }
-
 .result-section h3 {
-  margin-top: 0;
-  color: #333;
+  margin-top: 0; margin-bottom: 15px; font-size: 1.3rem; display: flex; align-items: center;
 }
+.result-section h3 .icon { margin-right: 8px; font-size: 1.2em; }
 
-/* 9단계: Gemini 텍스트 표시용 스타일 */
-.analysis-text {
-  font-family: inherit; /* body 폰트와 맞춤 */
-  font-size: 15px;
-  color: #333;
-  text-align: left;
-  white-space: pre-wrap; /* \n (줄바꿈)을 그대로 인식 */
-  word-wrap: break-word; /* 긴 단어 자동 줄바꿈 */
-  line-height: 1.6;
+/* 로딩 스피너 */
+.loading-spinner {
+  display: inline-block; border: 3px solid rgba(255, 255, 255, 0.3); border-left-color: #ffffff;
+  border-radius: 50%; width: 16px; height: 16px; animation: spin 1s linear infinite; margin-right: 8px;
 }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* 11단계: 챗봇 섹션 스타일 */
+.chatbot-section { margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6; }
+.chatbot-section h4 { margin-top: 0; margin-bottom: 15px; color: #343a40; font-size: 1.1rem; }
+.chat-history {
+  max-height: 300px; /* 높이 증가 */
+  overflow-y: auto; border: 1px solid #e0e0e0; border-radius: 8px;
+  padding: 15px; margin-bottom: 15px; background-color: #ffffff;
+}
+.chat-message {
+  margin-bottom: 10px; padding: 10px 15px; border-radius: 18px; /* 더 둥글게 */
+  line-height: 1.5; font-size: 0.95rem; max-width: 80%; word-wrap: break-word; clear: both; /* float 해제 */
+}
+.chat-message.user {
+  background-color: #007bff; color: white; float: right; /* 오른쪽 정렬 */
+  border-bottom-right-radius: 5px; margin-left: auto;
+}
+.chat-message.ai {
+  background-color: #e9ecef; color: #333; float: left; /* 왼쪽 정렬 */
+  border-bottom-left-radius: 5px; margin-right: auto; white-space: pre-wrap;
+}
+/* AI 로딩 애니메이션 */
+.chat-message.ai.loading span {
+  display: inline-block; width: 8px; height: 8px; margin: 0 2px;
+  background-color: #adb5bd; border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+.chat-message.ai.loading span:nth-child(1) { animation-delay: -0.32s; }
+.chat-message.ai.loading span:nth-child(2) { animation-delay: -0.16s; }
+@keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1.0); } }
+
+/* 질문 입력 영역 */
+.chat-input-area { display: flex; gap: 10px; }
+.chat-input {
+  flex-grow: 1; padding: 12px 15px; border: 1px solid #ced4da;
+  border-radius: 8px; font-size: 1rem;
+}
+.chat-input:focus { outline: none; border-color: #80bdff; box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
+.chat-button {
+  padding: 12px 18px; background-color: #6c757d; color: white; flex-shrink: 0;
+}
+.chat-button:hover:not(:disabled) { background-color: #5a6268; }

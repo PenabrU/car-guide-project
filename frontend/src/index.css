@@ -1,20 +1,25 @@
-/* 기본 폰트 및 배경색 설정 */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  /* 밝은 회색 배경으로 변경 */
-  background-color: #f4f7f6;
-  color: #333; /* 기본 글자색 */
+  background-color: #f8f9fa;
+  color: #212529;
+  line-height: 1.6;
 }
-
-/* 중앙 정렬을 위한 기본 컨테이너 */
 #root {
-  max-width: 800px; /* 너무 넓어지지 않게 */
-  margin: 40px auto; /* 위아래 여백 40px, 좌우 자동 (중앙 정렬) */
-  padding: 20px;
+  max-width: 720px;
+  margin: 50px auto;
+  padding: 0 15px;
 }
+a { color: #0d6efd; text-decoration: none; }
+a:hover { text-decoration: underline; }
+button {
+  cursor: pointer; border: none; border-radius: 8px;
+  padding: 12px 24px; font-size: 1rem; font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+button:hover:not(:disabled) { transform: translateY(-2px); }
+button:disabled { cursor: not-allowed; opacity: 0.65; }
