@@ -24,3 +24,6 @@ yarn-error.log*
 
 # Google Cloud 서비스 계정 키 무시
 /backend/service-account-key.json
+
+# 환경 변수 파일 무시
+/backend/.env
