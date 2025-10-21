@@ -1,0 +1,81 @@
+/* frontend/src/components/TermModal.css */
+.modal-overlay {
+  position: fixed; /* 화면 전체 고정 */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* 반투명 검은 배경 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* 다른 요소 위에 표시 */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  max-width: 500px; /* 최대 너비 */
+  width: 90%; /* 화면 너비의 90% */
+  position: relative;
+  animation: slide-down 0.3s ease-out; /* 나타나는 애니메이션 */
+}
+
+@keyframes slide-down {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #aaa;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+.modal-close-button:hover {
+  color: #333;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #0056b3;
+  font-size: 1.3rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.modal-body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+  min-height: 50px; /* 로딩 시 높이 유지 */
+}
+
+.modal-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+}
+
+/* 모달용 로딩 스피너 (색상 변경) */
+.loading-spinner-modal {
+  display: inline-block;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #007bff; /* 파란색 */
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+/* spin 애니메이션은 App.css에 이미 정의되어 있음 */

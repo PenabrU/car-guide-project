@@ -1,25 +1,259 @@
-.analysis-report { font-family: inherit; font-size: 15px; color: #333; text-align: left; line-height: 1.7; }
-.report-section { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #e9ecef; }
-.report-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.report-section h4 { margin-top: 0; margin-bottom: 12px; color: #0056b3; font-size: 1.1em; border-left: 4px solid #0056b3; padding-left: 8px; }
-.info-grid { display: grid; grid-template-columns: auto 1fr; gap: 8px 15px; font-size: 0.95em; }
-.info-grid span:nth-child(odd) { color: #555; }
-.summary { font-weight: 500; color: #1a1a1a; margin-bottom: 10px; }
-.details-list { padding-left: 20px; margin-top: 5px; list-style-type: disc; }
-.details-list li { margin-bottom: 6px; }
-.risk-list li { background-color: #fff9db; padding: 8px 12px; border-radius: 4px; margin-bottom: 8px; }
-.risk-list .item-label { font-weight: bold; margin-right: 5px; }
-.risk-list .item-status { color: #dc3545; font-weight: 500; margin-right: 5px; }
-.risk-list .item-advice { display: block; font-size: 0.9em; color: #495057; margin-left: 10px; }
-.risk-list .item-cost { font-size: 0.9em; color: #6c757d; margin-left: 5px; }
-.price-guidance { margin-top: 15px; background-color: #e7f5ff; padding: 10px 15px; border-radius: 4px; font-size: 0.95em; }
-.price-guidance strong { color: #007bff; }
+/* 기본 리포트 스타일 */
+.analysis-report {
+  font-family: inherit; /* 앱 기본 폰트 상속 */
+  font-size: 15px;
+  color: #333; /* 기본 텍스트 색상 */
+  text-align: left; /* 왼쪽 정렬 */
+  line-height: 1.7; /* 줄 간격 */
+}
+
+/* 각 분석 섹션 */
+.report-section {
+  margin-bottom: 25px; /* 섹션 간격 */
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e9ecef; /* 구분선 */
+}
+.report-section:last-child {
+  border-bottom: none; /* 마지막 섹션은 구분선 없음 */
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.report-section h4 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #0056b3; /* 섹션 제목 색상 */
+  font-size: 1.1em;
+  border-left: 4px solid #0056b3; /* 제목 왼쪽 강조선 */
+  padding-left: 8px;
+}
+
+/* AI 위험도 점수 섹션 */
+.risk-score-section {
+  text-align: center; /* 가운데 정렬 */
+  background-color: #e9ecef; /* 약간 어두운 배경 */
+  border: none; /* 구분선 제거 */
+  padding: 20px;
+  border-radius: 8px; /* 둥근 모서리 */
+  margin-bottom: 30px !important; /* 다른 섹션과의 간격 확보 */
+}
+.risk-score-section h4 {
+  color: #495057; /* 제목 색상 변경 */
+  border: none; /* 강조선 제거 */
+  padding: 0;
+  margin-bottom: 15px;
+}
+.score-display {
+  margin-bottom: 10px;
+}
+.score-value {
+  font-size: 3.5em; /* 점수 크게 */
+  font-weight: 700;
+  line-height: 1;
+}
+.score-unit {
+  font-size: 1.2em;
+  color: #6c757d; /* 단위 색상 */
+  margin-left: 5px;
+}
+.score-summary {
+  font-size: 0.9em;
+  color: #495057;
+  line-height: 1.5;
+}
+.score-summary strong {
+  color: #343a40; /* 강조 텍스트 */
+}
+
+/* 위험도 외 다른 섹션 제목 상단 여백 조정 */
+.report-section:not(.risk-score-section) h4 {
+  margin-top: 5px;
+}
+
+/* 기본 정보 그리드 스타일 */
+.info-grid {
+  display: grid;
+  grid-template-columns: auto 1fr; /* 라벨과 값 */
+  gap: 8px 15px; /* 행 간격, 열 간격 */
+  font-size: 0.95em;
+}
+.info-grid span:nth-child(odd) { /* 홀수번째 (라벨) */
+  color: #555; /* 라벨 색상 */
+}
+
+/* 요약 텍스트 */
+.summary {
+  font-weight: 500;
+  color: #1a1a1a; /* 요약 텍스트 색상 */
+  margin-bottom: 10px;
+}
+
+/* 상세 목록 (사고 이력 등) */
+.details-list {
+  padding-left: 20px;
+  margin-top: 5px;
+  list-style-type: disc; /* 기본 불릿 */
+}
+.details-list li {
+  margin-bottom: 6px;
+}
+
+/* 리스크 목록 (현재 잠재적 리스크) */
+.risk-list li {
+  background-color: #fff9db; /* 연한 노랑 배경 */
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.risk-list .item-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+.risk-list .item-status {
+  color: #dc3545; /* 빨간색으로 상태 강조 */
+  font-weight: 500;
+  margin-right: 5px;
+}
+.risk-list .item-advice {
+  display: block; /* 줄바꿈 */
+  font-size: 0.9em;
+  color: #495057; /* 조언 텍스트 색상 */
+  margin-left: 10px;
+}
+.risk-list .item-cost {
+  font-size: 0.9em;
+  color: #6c757d; /* 예상 비용 색상 */
+  margin-left: 5px;
+}
+
+/* 가격 가이드 */
+.price-guidance {
+  margin-top: 15px;
+  background-color: #e7f5ff; /* 연한 파랑 배경 */
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+.price-guidance strong {
+  color: #007bff; /* 강조 텍스트 */
+}
+
 /* AI 예측 시세 섹션 */
-.price-section { background-color: #f0fff4; border-left: 4px solid #28a745; padding: 15px; border-radius: 4px; border-bottom: none; } /* border-bottom 제거 */
-.price-section h4 { color: #1c7430; border-left: none; padding-left: 0; }
-.predicted-range { font-size: 1.4em; font-weight: bold; color: #28a745; text-align: center; margin-bottom: 10px; }
-.prediction-basis { font-size: 0.9em; color: #555; line-height: 1.5; }
-/* 에러 표시 */
-.error-box { background-color: #fff3f3; border: 1px solid #ffcccc; padding: 15px; border-radius: 8px; }
-.raw-text { font-family: monospace; font-size: 13px; background-color: #f8f9fa; padding: 10px; border-radius: 4px; max-height: 200px; overflow-y: auto; white-space: pre-wrap; word-wrap: break-word; }
-.no-results { color: #6c757d; text-align: center; padding: 20px; }
+.price-section {
+  background-color: #f0fff4; /* 연한 녹색 배경 */
+  border-left: 4px solid #28a745; /* 왼쪽 강조선 */
+  padding: 15px;
+  border-radius: 4px;
+  border-bottom: none; /* 구분선 제거 */
+}
+.price-section h4 {
+  color: #1c7430; /* 제목 색상 */
+  border-left: none; /* 기존 제목 스타일 덮어쓰기 */
+  padding-left: 0;
+}
+.predicted-range {
+  font-size: 1.4em; /* 시세 범위 크게 강조 */
+  font-weight: bold;
+  color: #28a745; /* 초록색 */
+  text-align: center;
+  margin-bottom: 10px;
+}
+.prediction-basis {
+  font-size: 0.9em;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* AI 유지보수 예측 섹션 */
+.maintenance-section h4 {
+  color: #fd7e14; /* 주황색 계열 */
+  border-left-color: #fd7e14;
+}
+.sub-heading {
+  font-weight: 600;
+  color: #495057;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 0.95em;
+}
+.maintenance-list li {
+  background-color: #fff3cd; /* 연한 노랑 배경 */
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+}
+.maintenance-list .item-label {
+  font-weight: bold;
+  display: block; /* 줄바꿈 */
+}
+.maintenance-list .item-timing {
+  color: #6c757d; /* 예상 시기 색상 */
+  margin-right: 5px;
+}
+.maintenance-list .item-cost {
+  color: #dc3545; /* 예상 비용 색상 (빨강) */
+}
+.issue-list li { /* 고질병 목록 */
+  background-color: #f8d7da; /* 연한 빨강 배경 (주의) */
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+}
+.overall-advice {
+  margin-top: 15px;
+  background-color: #e2e3e5; /* 회색 배경 */
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+.overall-advice strong {
+  color: #343a40; /* 강조 텍스트 */
+}
+
+/* 설명 가능한 용어 스타일 (12단계 추가) */
+.explainable-term {
+  border-bottom: 1px dotted #007bff; /* 파란색 점선 밑줄 */
+  cursor: help; /* 도움말 커서 */
+  position: relative; /* 아이콘 위치 기준 */
+  /* 인라인 블록으로 설정하여 줄바꿈 시 아이콘이 함께 이동하도록 함 */
+  display: inline-block;
+  padding-right: 2px; /* 아이콘과 약간의 간격 */
+}
+.explain-icon {
+  display: inline-block;
+  font-size: 0.7em; /* 아이콘 크기 */
+  color: #007bff;
+  margin-left: 2px; /* 용어와의 간격 */
+  vertical-align: super; /* 위 첨자 */
+  font-weight: bold;
+  /* 사용자가 텍스트를 선택할 때 아이콘은 선택되지 않도록 함 */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* 에러 메시지 표시 */
+.error-box {
+  background-color: #fff3f3; /* 연한 빨강 배경 */
+  border: 1px solid #ffcccc; /* 빨간 테두리 */
+  padding: 15px;
+  border-radius: 8px;
+}
+.raw-text { /* Gemini가 잘못된 JSON 반환 시 원본 텍스트 표시 */
+  font-family: monospace; /* 고정폭 글꼴 */
+  font-size: 13px;
+  background-color: #f8f9fa; /* 밝은 회색 배경 */
+  padding: 10px;
+  border-radius: 4px;
+  max-height: 200px; /* 최대 높이 제한 */
+  overflow-y: auto; /* 스크롤바 */
+  white-space: pre-wrap; /* 줄바꿈 유지 */
+  word-wrap: break-word; /* 긴 단어 자동 줄바꿈 */
+}
+.no-results { /* 분석/추천 결과 없을 때 */
+  color: #6c757d;
+  text-align: center;
+  padding: 20px;
+}
